@@ -3,7 +3,7 @@ from psycopg2 import sql
 
 # Replace these with your actual RDS database credentials
 db_config = {
-    "host": "dbtest-instance-2.cluwyikm8i9b.eu-north-1.rds.amazonaws.com",
+    "host": "dbtest.cluster-cluwyikm8i9b.eu-north-1.rds.amazonaws.com",
     "port": "5432",  # default PostgreSQL port
     "dbname": "dbtest",
     "user": "postgresMaster",
