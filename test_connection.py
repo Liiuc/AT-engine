@@ -5,7 +5,7 @@ from psycopg2 import sql
 db_config = {
     "host": "dbtest-instance-2.cluwyikm8i9b.eu-north-1.rds.amazonaws.com",
     "port": "5432",  # default PostgreSQL port
-    "dbname": "dbtest-instance-2",
+    "dbname": "dbtest",
     "user": "postgresMaster",
     "password": "pa55word"
 }
