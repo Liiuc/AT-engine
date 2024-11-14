@@ -5,30 +5,25 @@ from psycopg2 import sql
 db_config = {
     "host": "dbtest.cluster-cluwyikm8i9b.eu-north-1.rds.amazonaws.com",
     "port": "5432",  # default PostgreSQL port
-    "dbname": "dbtest",
+    "dbname": "postgres",  # default database to connect to initially
     "user": "postgresMaster",
     "password": "pa55word"
 }
 
 try:
-    # Establish a connection to the RDS database
+    # Connect to the default 'postgres' database
     connection = psycopg2.connect(**db_config)
+    connection.autocommit = True
     cursor = connection.cursor()
-
-    # Run a simple query to check the connection
-    cursor.execute("SELECT 1;")
-    result = cursor.fetchone()
-
-    if result:
-        print("Connection successful! Database is accessible.")
-    else:
-        print("Connection failed. Check your credentials and network setup.")
+    
+    # Create a new database named 'primodatabase'
+    cursor.execute("CREATE DATABASE primodatabase;")
+    print("Database 'primodatabase' created successfully.")
 
 except Exception as e:
     print(f"Error: {e}")
 
 finally:
-    if connection:
+    if 'connection' in locals() and connection:
         cursor.close()
         connection.close()
-        print("Database connection closed.")
